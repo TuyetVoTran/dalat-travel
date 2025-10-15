@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nguyễn Toàn Travel - Dịch Vụ Du Lịch Đà Lạt</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html, body {
+            width: 100%;
+            height: 100%;
+            margin: 0 !important;
+            padding: 0 !important;
+            overflow-x: hidden;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f8f9fa;
+            min-width: 100vw;
+            position: relative;
+            left: 50%;
+            right: 50%;
+            margin-left: -50vw !important;
+            margin-right: -50vw !important;
+            width: 100vw;
+        }
+        
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .logo i {
+            font-size: 2rem;
+        }
+        
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s;
+            font-weight: 500;
+        }
+        
+        nav a:hover {
+            opacity: 0.8;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23667eea" width="1200" height="600"/><path fill="%23764ba2" opacity="0.3" d="M0 300L50 280C100 260 200 220 300 200C400 180 500 180 600 200C700 220 800 260 900 280C1000 300 1100 300 1150 300L1200 300L1200 600L1150 600C1100 600 1000 600 900 600C800 600 700 600 600 600C500 600 400 600 300 600C200 600 100 600 50 600L0 600Z"/></svg>');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 8rem 20px 6rem;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: #ff6b6b;
+            color: white;
+            padding: 1rem 2.5rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(255,107,107,0.4);
+        }
+        
+        .cta-button:hover {
+            background: #ff5252;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255,107,107,0.6);
+        }
+        
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Sections */
+        section {
+            padding: 4rem 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #667eea;
+        }
+        
+        .section-subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 3rem;
+            font-size: 1.1rem;
+        }
+        
+        /* Services Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .service-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+            text-align: center;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(102,126,234,0.3);
+        }
+        
+        .service-icon {
+            font-size: 3rem;
+            color: #667eea;
+            margin-bottom: 1rem;
+        }
+        
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+        
+        .service-card p {
+            color: #666;
+            margin-bottom: 1rem;
+        }
+        
+        .service-card ul {
+            list-style: none;
+            text-align: left;
+            color: #555;
+            margin: 1rem 0;
+        }
+        
+        .service-card ul li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .service-card ul li:last-child {
+            border-bottom: none;
+        }
+        
+        .service-card ul li i {
+            color: #667eea;
+            margin-right: 10px;
+        }
+        
+        .price {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #ff6b6b;
+            margin-top: 1rem;
+        }
+        
+        /* Restaurant Grid */
+        .restaurant-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .restaurant-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+        }
+        
+        .restaurant-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(102,126,234,0.3);
+        }
+        
+        .restaurant-image {
+            height: 200px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: white;
+        }
+        
+        .restaurant-content {
+            padding: 1.5rem;
+        }
+        
+        .restaurant-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+        
+        .restaurant-card .specialty {
+            color: #ff6b6b;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        
+        .restaurant-card p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+        
+        /* Accommodation Section */
+        .accommodation-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .accommodation-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+        }
+        
+        .accommodation-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(102,126,234,0.3);
+        }
+        
+        .accommodation-image {
+            height: 220px;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: white;
+        }
+        
+        .accommodation-content {
+            padding: 1.5rem;
+        }
+        
+        .accommodation-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+        
+        .amenities {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 1rem 0;
+        }
+        
+        .amenity-tag {
+            background: #f0f0f0;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: #555;
+        }
+        
+        .accommodation-card .price {
+            font-size: 1.5rem;
+            color: #667eea;
+            margin-top: 1rem;
+        }
+        
+        /* Booking Form */
+        .booking-form {
+            background: white;
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 30px rgba(0,0,0,0.1);
+            max-width: 600px;
+            margin: 2rem auto;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+        
+        .submit-button {
+            width: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .submit-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(102,126,234,0.4);
+        }
+        
+        /* Contact Info */
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .contact-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        
+        .contact-icon {
+            font-size: 2.5rem;
+            color: #667eea;
+            margin-bottom: 1rem;
+        }
+        
+        .contact-card h3 {
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+        
+        .contact-card p {
+            color: #666;
+        }
+        
+        .contact-card a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        /* Footer */
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 4rem;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .social-links {
+            margin: 1rem 0;
+        }
+        
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            margin: 0 1rem;
+            transition: color 0.3s;
+        }
+        
+        .social-links a:hover {
+            color: #667eea;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            nav ul {
+                gap: 1rem;
+                justify-content: center;
+            }
+            
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .booking-form {
+                padding: 2rem 1.5rem;
+            }
+        }
+        
+        /* Animation */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .service-card,
+        .restaurant-card,
+        .accommodation-card {
+            animation: fadeInUp 0.6s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <i class="fas fa-mountain"></i>
+                Nguyễn Toàn Travel
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Trang chủ</a></li>
+                    <li><a href="#vehicles">Dịch vụ xe</a></li>
+                    <li><a href="#cuisine">Ẩm thực</a></li>
+                    <li><a href="#accommodation">Nghỉ dưỡng</a></li>
+                    <li><a href="#booking">Đặt trước</a></li>
+                    <li><a href="#contact">Liên hệ</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <h1>Khám Phá Đà Lạt Cùng Nguyễn Toàn Travel</h1>
+            <p>Trải nghiệm du lịch trọn vẹn với dịch vụ chất lượng và giá cả hợp lý</p>
+            <a href="#booking" class="cta-button">Đặt dịch vụ ngay</a>
+        </div>
+    </section>
+
+    <!-- Giới thiệu -->
+    <section id="about" style="background: white;">
+        <div class="container">
+            <h2 class="section-title">Về Chúng Tôi</h2>
+            <p class="section-subtitle">Nguyễn Toàn Travel - Đối tác tin cậy cho chuyến du lịch Đà Lạt của bạn</p>
+            <div style="max-width: 800px; margin: 0 auto; text-align: center; line-height: 1.8; color: #555;">
+                <p style="margin-bottom: 1rem;">
+                    Với hơn 10 năm kinh nghiệm trong lĩnh vực du lịch, chúng tôi tự hào là một trong những đơn vị hàng đầu cung cấp dịch vụ du lịch tại Đà Lạt. Chúng tôi cam kết mang đến cho quý khách những trải nghiệm tuyệt vời nhất với dịch vụ chuyên nghiệp, tận tâm và giá cả phải chăng.
+                </p>
+                <p>
+                    Đội ngũ lái xe nhiều năm kinh nghiệm, am hiểu địa phương, luôn sẵn sàng tư vấn và hỗ trợ quý khách 24/7. Hãy để chúng tôi đồng hành cùng bạn khám phá vẻ đẹp thơ mộng của thành phố ngàn hoa!
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dịch vụ xe -->
+    <section id="vehicles">
+        <div class="container">
+            <h2 class="section-title">Dịch Vụ Cho Thuê Xe</h2>
+            <p class="section-subtitle">Đa dạng phương tiện, đáp ứng mọi nhu cầu di chuyển</p>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-car"></i></div>
+                    <h3>Xe 4 Chỗ</h3>
+                    <p>Phù hợp cho gia đình nhỏ, cặp đôi</p>
+                    <ul>
+                        <li><i class="fas fa-check"></i> Toyota Vios, Honda City</li>
+                        <li><i class="fas fa-check"></i> Điều hòa mát lạnh</li>
+                        <li><i class="fas fa-check"></i> Lái xe nhiều kinh nghiệm</li>
+                        <li><i class="fas fa-check"></i> Bảo hiểm toàn diện</li>
+                    </ul>
+                    <p class="price">600.000đ - 800.000đ/ngày</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-van-shuttle"></i></div>
+                    <h3>Xe 7 Chỗ</h3>
+                    <p>Lý tưởng cho nhóm bạn, gia đình đông</p>
+                    <ul>
+                        <li><i class="fas fa-check"></i> Toyota Innova, Ford Everest</li>
+                        <li><i class="fas fa-check"></i> Rộng rãi, thoải mái</li>
+                        <li><i class="fas fa-check"></i> Phù hợp đường dài</li>
+                        <li><i class="fas fa-check"></i> Miễn phí nước uống</li>
+                    </ul>
+                    <p class="price">900.000đ - 1.200.000đ/ngày</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-bus"></i></div>
+                    <h3>Xe 16 Chỗ</h3>
+                    <p>Dành cho đoàn, công ty, team building</p>
+                    <ul>
+                        <li><i class="fas fa-check"></i> Ford Transit, Mercedes</li>
+                        <li><i class="fas fa-check"></i> Ghế ngồi cao cấp</li>
+                        <li><i class="fas fa-check"></i> Hệ thống âm thanh hiện đại</li>
+                        <li><i class="fas fa-check"></i> Tài xế chuyên nghiệp</li>
+                    </ul>
+                    <p class="price">1.500.000đ - 2.000.000đ/ngày</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-motorcycle"></i></div>
+                    <h3>Cho Thuê Xe Máy</h3>
+                    <p>Tự do khám phá Đà Lạt theo cách riêng</p>
+                    <ul>
+                        <li><i class="fas fa-check"></i> Honda Wave, Yamaha Sirius</li>
+                        <li><i class="fas fa-check"></i> Xe mới, bảo dưỡng định kỳ</li>
+                        <li><i class="fas fa-check"></i> Tặng kèm áo mưa, khăn</li>
+                        <li><i class="fas fa-check"></i> Giao nhận tận nơi</li>
+                    </ul>
+                    <p class="price">100.000đ - 150.000đ/ngày</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ẩm thực -->
+    <section id="cuisine" style="background: white;">
+        <div class="container">
+            <h2 class="section-title">Ẩm Thực Đà Lạt</h2>
+            <p class="section-subtitle">Khám phá hương vị độc đáo của thành phố ngàn hoa</p>
+            <div class="restaurant-grid">
+                <div class="restaurant-card">
+                    <div class="restaurant-image"><i class="fas fa-bowl-food"></i></div>
+                    <div class="restaurant-content">
+                        <h3>Bánh Tráng Nướng</h3>
+                        <p class="specialty">Đặc sản phố đi bộ</p>
+                        <p>Pizza Đà Lạt với vô vàn topping hấp dẫn: trứng, chả, khô bò, pate... Giòn tan, thơm ngon khó cưỡng.</p>
+                    </div>
+                </div>
+                
+                <div class="restaurant-card">
+                    <div class="restaurant-image"><i class="fas fa-bread-slice"></i></div>
+                    <div class="restaurant-content">
+                        <h3>Bánh Mì Xíu Mại</h3>
+                        <p class="specialty">Món ăn sáng nổi tiếng</p>
+                        <p>Bánh mì Đà Lạt giòn thơm kết hợp với xíu mại tự làm, kèm rau sống tươi ngon. Điểm đến không thể bỏ qua.</p>
+                    </div>
+                </div>
+                
+                <div class="restaurant-card">
+                    <div class="restaurant-image"><i class="fas fa-coffee"></i></div>
+                    <div class="restaurant-content">
+                        <h3>Cafe Rang Xay</h3>
+                        <p class="specialty">Cà phê nguyên chất</p>
+                        <p>Thưởng thức cà phê Đà Lạt chính gốc với view thành phố tuyệt đẹp. Không gian lãng mạn, yên tĩnh.</p>
+                    </div>
+                </div>
+                
+                <div class="restaurant-card">
+                    <div class="restaurant-image"><i class="fas fa-bowl-rice"></i></div>
+                    <div class="restaurant-content">
+                        <h3>Lẩu Gà Lá É</h3>
+                        <p class="specialty">Đặc sản núi rừng</p>
+                        <p>Gà ta tươi ngon nấu lẩu với lá é đặc trưng. Hương vị đậm đà, ấm áp hoàn hảo cho thời tiết Đà Lạt.</p>
+                    </div>
+                </div>
+                
+                <div class="restaurant-card">
+                    <div class="restaurant-image"><i class="fas fa-ice-cream"></i></div>
+                    <div class="restaurant-content">
+                        <h3>Kem Bơ & Sữa Chua Dẻo</h3>
+                        <p class="specialty">Tráng miệng độc đáo</p>
+                        <p>Kem bơ béo ngậy từ bơ Đà Lạt, sữa chua dẻo thanh mát. Điểm tâm ngọt nhẹ sau bữa ăn chính.</p>
+                    </div>
+                </div>
+                
+                <div class="restaurant-card">
+                    <div class="restaurant-image"><i class="fas fa-carrot"></i></div>
+                    <div class="restaurant-content">
+                        <h3>Rau Rừng & Nấm Nướng</h3>
+                        <p class="specialty">Đặc sản từ thiên nhiên</p>
+                        <p>Các loại rau rừng, nấm tươi được nướng thơm lừng. Hương vị tự nhiên, bổ dưỡng từ núi rừng Đà Lạt.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dịch vụ nghỉ dưỡng -->
+    <section id="accommodation">
+        <div class="container">
+            <h2 class="section-title">Dịch Vụ Nghỉ Dưỡng</h2>
+            <p class="section-subtitle">Không gian nghỉ ngơi lý tưởng, view đẹp, tiện nghi đầy đủ</p>
+            <div class="accommodation-grid">
+                <div class="accommodation-card">
+                    <div class="accommodation-image"><i class="fas fa-hotel"></i></div>
+                    <div class="accommodation-content">
+                        <h3>Khách Sạn 3 Sao</h3>
+                        <div class="amenities">
+                            <span class="amenity-tag"><i class="fas fa-wifi"></i> WiFi miễn phí</span>
+                            <span class="amenity-tag"><i class="fas fa-parking"></i> Bãi đỗ xe</span>
+                            <span class="amenity-tag"><i class="fas fa-mug-hot"></i> Bữa sáng</span>
+                            <span class="amenity-tag"><i class="fas fa-tv"></i> TV cáp</span>
+                        </div>
+                        <p>Vị trí trung tâm, gần chợ Đà Lạt. Phòng sạch sẽ, thoáng mát với đầy đủ tiện nghi cơ bản.</p>
+                        <p class="price">400.000đ - 600.000đ/đêm</p>
+                    </div>
+                </div>
+                
+                <div class="accommodation-card">
+                    <div class="accommodation-image"><i class="fas fa-building"></i></div>
+                    <div class="accommodation-content">
+                        <h3>Khách Sạn 4 Sao</h3>
+                        <div class="amenities">
+                            <span class="amenity-tag"><i class="fas fa-spa"></i> Spa</span>
+                            <span class="amenity-tag"><i class="fas fa-dumbbell"></i> Gym</span>
+                            <span class="amenity-tag"><i class="fas fa-swimming-pool"></i> Hồ bơi</span>
+                            <span class="amenity-tag"><i class="fas fa-concierge-bell"></i> Room service</span>
+                        </div>
+                        <p>View hồ Xuân Hương tuyệt đẹp. Phòng rộng rãi, nội thất cao cấp, phục vụ chuyên nghiệp.</p>
+                        <p class="price">800.000đ - 1.500.000đ/đêm</p>
+                    </div>
+                </div>
+                
+                <div class="accommodation-card">
+                    <div class="accommodation-image"><i class="fas fa-home"></i></div>
+                    <div class="accommodation-content">
+                        <h3>Villa & Homestay</h3>
+                        <div class="amenities">
+                            <span class="amenity-tag"><i class="fas fa-kitchen-set"></i> Bếp riêng</span>
+                            <span class="amenity-tag"><i class="fas fa-fire"></i> Lò sưởi</span>
+                            <span class="amenity-tag"><i class="fas fa-tree"></i> Sân vườn</span>
+                            <span class="amenity-tag"><i class="fas fa-mountain"></i> View núi</span>
+                        </div>
+                        <p>Không gian riêng tư cho gia đình. Thiết kế ấm cúng, view thiên nhiên tuyệt đẹp, trải nghiệm như ở nhà.</p>
+                        <p class="price">1.500.000đ - 3.000.000đ/đêm</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Đặt trước -->
+    <section id="booking" style="background: white;">
+        <div class="container">
+            <h2 class="section-title">Đặt Dịch Vụ Trước</h2>
+            <p class="section-subtitle">Điền thông tin để nhận tư vấn và báo giá chi tiết</p>
+            <div class="booking-form">
+                <form id="bookingForm">
+                    <div class="form-group">
+                        <label for="name"><i class="fas fa-user"></i> Họ và tên *</label>
+                        <input type="text" id="name" name="name" required placeholder="Nguyễn Văn A">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone"><i class="fas fa-phone"></i> Số điện thoại *</label>
+                        <input type="tel" id="phone" name="phone" required placeholder="0901234567">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email"><i class="fas fa-envelope"></i> Email</label>
+                        <input type="email" id="email" name="email" placeholder="email@example.com">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="service"><i class="fas fa-list"></i> Dịch vụ quan tâm *</label>
+                        <select id="service" name="service" required>
+                            <option value="">-- Chọn dịch vụ --</option>
+                            <option value="xe4cho">Thuê xe 4 chỗ</option>
+                            <option value="xe7cho">Thuê xe 7 chỗ</option>
+                            <option value="xe16cho">Thuê xe 16 chỗ</option>
+                            <option value="xemay">Thuê xe máy</option>
+                            <option value="amthuc">Tour ẩm thực</option>
+                            <option value="khachsan">Đặt phòng khách sạn</option>
+                            <option value="combo">Combo trọn gói</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="date"><i class="fas fa-calendar"></i> Ngày bắt đầu *</label>
+                        <input type="date" id="date" name="date" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="people"><i class="fas fa-users"></i> Số người</label>
+                        <input type="number" id="people" name="people" min="1" placeholder="2">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message"><i class="fas fa-comment"></i> Yêu cầu thêm</label>
+                        <textarea id="message" name="message" placeholder="Ghi chú thêm về yêu cầu của bạn..."></textarea>
+                    </div>
+                    
+                    <button type="submit" class="submit-button">
+                        <i class="fas fa-paper-plane"></i> Gửi yêu cầu đặt dịch vụ
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Liên hệ -->
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title">Thông Tin Liên Hệ</h2>
+            <p class="section-subtitle">Chúng tôi luôn sẵn sàng hỗ trợ bạn 24/7</p>
+            <div class="contact-info">
+                <div class="contact-card">
+                    <div class="contact-icon"><i class="fas fa-phone-alt"></i></div>
+                    <h3>Hotline</h3>
+                    <p><a href="tel:0123456789">0123 456 789</a></p>
+                    <p><a href="tel:0987654321">0987 654 321</a></p>
+                </div>
+                
+                <div class="contact-card">
+                    <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                    <h3>Email</h3>
+                    <p><a href="mailto:contact@nguyentoantravel.com">contact@nguyentoantravel.com</a></p>
+                    <p><a href="mailto:booking@nguyentoantravel.com">booking@nguyentoantravel.com</a></p>
+                </div>
+                
+                <div class="contact-card">
+                    <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+                    <h3>Địa chỉ</h3>
+                    <p>123 Đường Trần Phú</p>
+                    <p>Phường 4, TP. Đà Lạt, Lâm Đồng</p>
+                </div>
+                
+                <div class="contact-card">
+                    <div class="contact-icon"><i class="fab fa-facebook"></i></div>
+                    <h3>Mạng xã hội</h3>
+                    <p><a href="https://facebook.com" target="_blank">Facebook</a></p>
+                    <p><a href="https://zalo.me" target="_blank">Zalo: 0123456789</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <h3><i class="fas fa-mountain"></i> Nguyễn Toàn Travel</h3>
+            <p style="margin: 1rem 0;">Đối tác tin cậy cho chuyến du lịch Đà Lạt của bạn</p>
+            <div class="social-links">
+                <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook"></i></a>
+                <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://youtube.com" target="_blank"><i class="fab fa-youtube"></i></a>
+                <a href="https://zalo.me" target="_blank"><i class="fas fa-comments"></i></a>
+            </div>
+            <p style="margin-top: 1.5rem; opacity: 0.8;">© 2024 Nguyễn Toàn Travel. All rights reserved.</p>
+            <p style="margin-top: 0.5rem; font-size: 0.9rem; opacity: 0.7;">Giấy phép kinh doanh số: 01234567890 - Ngày cấp: 01/01/2020</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Form submission
+        document.getElementById('bookingForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = {
+                name: document.getElementById('name').value,
+                phone: document.getElementById('phone').value,
+                email: document.getElementById('email').value,
+                service: document.getElementById('service').value,
+                date: document.getElementById('date').value,
+                people: document.getElementById('people').value,
+                message: document.getElementById('message').value
+            };
+            
+            // Hiển thị thông báo thành công
+            alert('Cảm ơn bạn đã đặt dịch vụ!\n\nChúng tôi sẽ liên hệ với bạn trong thời gian sớm nhất.\n\nHotline: 0123 456 789');
+            
+            // Reset form
+            this.reset();
+            
+            // Trong thực tế, bạn có thể gửi dữ liệu này đến server hoặc Google Sheets
+            console.log('Booking data:', formData);
+        });
+
+        // Set minimum date to today
+        const today = new Date().toISOString().split('T')[0];
+        document.getElementById('date').setAttribute('min', today);
+
+        // Add animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.service-card, .restaurant-card, .accommodation-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>
